@@ -17,5 +17,7 @@ El escenario es:Hay 3 cajas. Dos tienen un pepino (el terror de los michis) y un
 
 El script corre miles de simulaciones para comparar dos estrategias:play_stay: El gato es testarudo y se queda con su elección  inicial play_change: El gato se asusta del pepino y salta a la otra caja.Usé la librería random (específicamente random.choice) para manejar las decisiones del gato y del humano. Solo necesitas Python 3 y ejecutar el main:Bashpython gato_monty.py
 Aunque parezca que da igual, la estadística dice que el gato es más listo si cambia de caja.Si se queda: Gana solo el $33\%$ de las veces.Si cambia: ¡Gana el $66\%$ Si cambias, estás aprovechando la información que el humano te dio al enseñarte dónde estaba uno de los pepinos.
+
  Autor: [José de Jesús Hernández Coutiño]
+ 
  Fecha: Abril 2026
