@@ -12,11 +12,10 @@ def play_change(n: int = 1000) -> float:
         pescado = create_game()
         eleccion_gato = random.choice(cajas)
         
-        # El humano muestra un pepino:Una caja que no sea la del gato ni la del pescado
         opciones_pepino = [c for c in cajas if c != eleccion_gato and c != pescado]
         caja_pepino = random.choice(opciones_pepino)
         
-        # El gato cambia a la caja restante
+        
         eleccion_final = [c for c in cajas if c != eleccion_gato and c != caja_pepino][0]
         
         if eleccion_final == pescado:
