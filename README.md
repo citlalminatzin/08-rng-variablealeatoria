@@ -12,7 +12,8 @@ Este simulador en Python que armé para el trabajo en clase de Monty Hall, usamo
 
 El escenario es:
 
-Hay 3 cajas. Dos tienen un pepino (el terror de los michis) y una tiene un pescadoEl gato elige una caja al azar.El humano que sabe las posiciones abre una de las otras cajas y muestra un pepino.Ahora el gato tiene una elección: ¿Se queda con su caja o cambia a la otra que queda cerrada? 
+Hay 3 cajas. Dos tienen un pepino (el terror de los michis) y una tiene un pescado.
+El gato elige una caja al azar. El humano que sabe las posiciones abre una de las otras cajas y muestra un pepino. Ahora el gato tiene una elección: ¿Se queda con su caja o cambia a la otra que queda cerrada? 
 
 
 # El Código
