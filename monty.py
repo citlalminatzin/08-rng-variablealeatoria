@@ -1,56 +1,50 @@
 import random
 
 def create_game() -> int:
-    """Escoge la caja ganadora de forma aleatoria."""
-    return random.choice([1, 2, 3])
+    """El humano esconde el pescado en una de las 3 cajas (0, 1 o 2)"""
+    return random.choice([0, 1, 2])
 
 def play_change(n: int = 1000) -> float:
-    """Estrategia: Cambiar de caja siempre."""
+    """El gato ve un pepino en otra caja y decide cambiar."""
     wins = 0
-    caja = [1, 2, 3]
-    
+    cajas = [0, 1, 2]
     for _ in range(n):
-        ganadora = create_game()
-        eleccion_inicial = random.choice(caja)
+        pescado = create_game()
+        eleccion_gato = random.choice(cajas)
         
-        # El presentador elige una puerta para abrir (pista)
-        # No puede ser la ganadora ni la que eligió el jugador
-        opciones_pista = [p for p in caja if p != ganadora and p != eleccion_inicial]
-        pista = random.choice(opciones_pista)
+        # El humano muestra un pepino:
+        # Una caja que no sea la del gato ni la del pescado
+        opciones_pepino = [c for c in cajas if c != eleccion_gato and c != pescado]
+        caja_pepino = random.choice(opciones_pepino)
         
-        # El jugador cambia a la puerta que queda
-        # No es la inicial ni la que abrió el presentador
-        opciones_cambio = [p for p in puertas if p != eleccion_inicial and p != pista]
-        nueva_eleccion = random.choice(opciones_cambio)
+        # El gato cambia a la caja restante
+        eleccion_final = [c for c in cajas if c != eleccion_gato and c != caja_pepino][0]
         
-        if nueva_eleccion == ganadora:
+        if eleccion_final == pescado:
             wins += 1
-            
     return wins / n
 
 def play_stay(n: int = 1000) -> float:
-    """Estrategia: Mantener la puerta inicial."""
+    """El gato se queda en su caja original pase lo que pase."""
     wins = 0
-    puertas = [1, 2, 3]
-    
+    cajas = [0, 1, 2]
     for _ in range(n):
-        ganadora = create_game()
-        eleccion_inicial = random.choice(puertas)
+        pescado = create_game()
+        eleccion_gato = random.choice(cajas)
         
-        # Aquí no importa la pista, porque el jugador no cambia
-        if eleccion_inicial == ganadora:
+        # No importa qué pepino enseñen, el gato no se mueve
+        if eleccion_gato == pescado:
             wins += 1
-            
     return wins / n
 
 def main():
-    n_trials = 10000
-    success_change = play_change(n_trials)
-    success_stay = play_stay(n_trials)
+    n = 10000
+    success_change = play_change(n)
+    success_stay = play_stay(n)
     
-    print(f"Resultados tras {n_trials} simulaciones:")
-    print(f"Tasa de éxito cambiando: {success_change:.2%}")
-    print(f"Tasa de éxito quedándose: {success_stay:.2%}")
+    print(f"--- Resultados de la Misión Pescado ({n} intentos) ---")
+    print(f"Tasa de éxito si el gato CAMBIA: {success_change:.2%}")
+    print(f"Tasa de éxito si el gato SE QUEDA: {success_stay:.2%}")
 
 if __name__ == "__main__":
     main()
